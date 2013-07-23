@@ -1,0 +1,8 @@
+- El proyecto consiste en una app para Android desarrollada en JQuery, HTML5, JQuery Mobile UI, y Phonegap. 
+- Su funcion es administrar clientes para una aseguradora de automoviles. 
+	- La autenticacion de los vendedores sera automatica 
+	- Debera poder Crear nuevos clientes, con sus respectivos automoviles. 
+	- Determinar mediante el tipo de seguro el monto mensual que debera abonar.
+		-El calculo es:
+	
+	- muchas cosas mas XD
