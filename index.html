@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title></title>
+  <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+  <link rel="stylesheet" type="text/css" href="css/themes/BlueTheme2.min.css">
+  
+  <!-- Extra Codiqa features -->
+  <link rel="stylesheet" href="codiqa.ext.css">
+  
+  <!-- jQuery and jQuery Mobile -->
+  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+  <!-- Extra Codiqa features -->
+  <script src="https://d10ajoocuyu32n.cloudfront.net/codiqa.ext.js"></script>
+   
+</head>
+<body>
+<!-- Home -->
+    <div data-role="page" id="page1">
+        <div data-theme="a" data-role="header">
+            <h3>
+                Ventas.
+            </h3>
+        </div>
+        <div data-role="content">
+            <div data-theme="a" data-role="collapsible-set">
+                <div data-role="collapsible">
+                    <h3 style="text-align: center;">
+                        Cliente
+                    </h3>
+                        <a id="newclient" data-role="button" data-transition="flip" data-theme="b"
+                        href="#page2" data-icon="edit" data-iconpos="left">
+                            Nuevo cliente
+                        </a>
+                        <a id="newclient" data-role="button" data-transition="flip" data-theme="b"
+                        href="#page5-2" data-icon="edit" data-iconpos="left">
+                            Todos los Clientes
+                        </a>
+                </div>
+            </div>    
+            <a id="charge" data-role="button" data-transition="flip" data-theme="b"
+            href="#page4" data-icon="edit" data-iconpos="left">
+                Cobrar seguro
+            </a>
+            <a id="simulation" data-role="button" data-transition="flip" data-theme="b"
+            href="#page3-2" data-icon="edit" data-iconpos="left">
+                Presupuesto
+            </a>
+              <a id="simulation" data-role="button" data-transition="flip" data-theme="b"
+            href="#help" data-icon="edit" data-iconpos="left">
+                Ayuda.
+            </a>
+        </div>
+    </div>
+
+<!-- client -->
+<!--SCRIPT-->
+<script type="text/javascript">
+    function validateClient(){
+       
+        var brandClient = document.getElementById('brand').value;
+        var yearClient = document.getElementById('year').value;
+        var costClient = document.getElementById('cost').value;
+       
+
+        var AsuranceCost = costClient - (3000 * (2013 - yearClient));
+        AsuranceCost = AsuranceCost * 0.002;
+        
+        /*if (radio2 == null){  
+            AsuranceCost = AsuranceCost * 0.001;
+            return false;
+        }
+        if (radio1 == null){
+            AsuranceCost = AsuranceCost * 0.0005; 
+            return false;
+        }*/
+
+        if (brandClient == null || yearClient == null || costClient == null){
+            document.getElementById('datos123').innerHTML = "un campo esta vacio";
+            return false;
+        }
+        else{
+            document.getElementById('pmarca').innerHTML = brandClient;
+            document.getElementById('pmodelo').innerHTML = yearClient;
+            document.getElementById('pcosto').innerHTML = costClient;
+            document.getElementById('pseguro').innerHTML = AsuranceCost;
+            return false;
+        }
+
+    }
+
+</script>
+<!--SCRIPT-->
+
+
+
+<div data-role="page" id="page2">
+    <div data-theme="a" data-role="header">
+        <a id="back" data-role="button" data-transition="flip" data-theme="b"
+        href="#page1" data-icon="back" data-iconpos="left" class="ui-btn-left">
+            Atras
+        </a>
+        <h3>
+            Ventas.
+        </h3>
+    </div>
+    <div data-role="content">
+        <h4>
+            Datos del cliente
+        </h4>
+        <div data-role="fieldcontain">
+            <input name="name" id="name" placeholder="Nombre y Apellido" value=""
+            type="text">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="dni" id="dni" placeholder="DNI" value="" type="number">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="address" id="address" placeholder="Direccion" value="" type="text">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="phone" id="phone" placeholder="Telefono" value="" type="tel">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="email" id="email" placeholder="Email" value="" type="email">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="datebirth" id="datebirth" placeholder="Fecha de nacimiento"
+            value="" type="date">
+        </div>
+        <a data-role="button" data-transition="flip" data-theme="b"
+        href="#page3">
+            Datos del vehiculo
+        </a>
+    </div>
+</div>
+
+<!--script ventas -->
+<script type="text/javascript">
+    function validateClientPorVenta(){
+        var nameClient = document.getElementById('name').value;
+        var dniClient = document.getElementById('dni').value;
+        var addressClient = document.getElementById('address').value;
+        var phoneClient = document.getElementById('phone').value;
+        var emailClient = document.getElementById('email').value;
+        var brandClient2 = document.getElementById('brand2').value;
+        var yearClient2 = document.getElementById('year2').value;
+        var costClient2 = document.getElementById('cost2').value;
+
+        var AsuranceCostReal = costClient2 - (3000 * (2013 - yearClient2));
+        AsuranceCostReal = AsuranceCostReal * 0.002;
+
+        if (brandClient2 == null || yearClient2 == null || costClient2 == null){
+            document.getElementById('datos321').innerHTML = "un campo esta vacio";
+            return false;
+        }
+        else{
+            document.getElementById('nameClienteReal').innerHTML = nameClient;
+            document.getElementById('dniClienteReal').innerHTML = dniClient;
+            document.getElementById('direccionClienteReal').innerHTML = addressClient;
+            document.getElementById('telefonoClienteReal').innerHTML = phoneClient;
+             document.getElementById('emailClienteReal').innerHTML = emailClient;
+            document.getElementById('vehiculoClienteReal').innerHTML = brandClient2 + " modelo:" + yearClient2 + " Valor: $" + costClient2;
+
+            document.getElementById('SeguroxMesClienteReal').innerHTML = AsuranceCostReal;
+
+            document.getElementById('qwe').innerHTML = nameClient;
+            document.getElementById('ert').innerHTML = dniClient;
+            document.getElementById('tyu').innerHTML = addressClient;
+            document.getElementById('uio').innerHTML = emailClient;
+            document.getElementById('op').innerHTML = brandClient2 + " Modelo:" + yearClient2 + " Valor: " + costClient2;
+            return false;
+        }
+
+    }
+</script>
+
+<!-- Vehicle -->
+<div data-role="page" id="page3">
+    <div data-theme="a" data-role="header">
+        <a id="back" data-role="button" data-transition="flip" data-theme="b"
+        href="#page2" data-icon="back" data-iconpos="left" class="ui-btn-left">
+            Atras
+        </a>
+        <h3>
+            Ventas.
+        </h3>
+    </div>
+    <div data-role="content">
+        <h4 id="datos321">
+            Datos del vehiculo
+        </h4>
+        <div data-role="fieldcontain">
+            <input name="brand" id="brand2" placeholder="Marca" value="" type="text">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="year" id="year2" placeholder="Modelo" value="" type="number">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="cost" id="cost2" placeholder="Valor" value="" type="number">
+        </div>
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup" data-type="vertical">
+                <legend>
+                    Tipo de seguro
+                </legend>
+                <input id="radio1" name="" value="1" data-theme="b" type="radio">
+                <label for="radio1">
+                    Contra todo riezgo
+                </label>
+                <input id="radio2" name="" value="2" data-theme="b" type="radio">
+                <label for="radio2">
+                    Contra terceros
+                </label>
+            </fieldset>
+        </div>
+		
+		
+        <a data-role="button" data-rel="dialog" data-inline="true" data-transition="flip" data-theme="b"
+        href="#page6" data-icon="star" data-iconpos="right" onclick="validateClientPorVenta()">
+            Ok
+        </a>
+    </div>
+</div>
+
+<!-- Vehicle PRESUPUESTO-->
+<div data-role="page" id="page3-2">
+    <div data-theme="a" data-role="header">
+        <a id="back" data-role="button" data-transition="flip" data-theme="b"
+        href="#page1" data-icon="back" data-iconpos="left" class="ui-btn-left">
+            Atras
+        </a>
+        <h3>
+            Ventas.
+        </h3>
+    </div>
+    <div data-role="content">
+        <h4 id= "datos123">
+            Datos del vehiculo
+        </h4>
+        <div data-role="fieldcontain">
+            <input name="brand" id="brand" placeholder="Marca" value="" type="text">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="year" id="year" placeholder="Modelo" value="" type="number">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="cost" id="cost" placeholder="Valor" value="" type="number">
+        </div>
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup" data-type="vertical">
+                <legend>
+                    Tipo de seguro
+                </legend>
+                <input id="radio1" name="" value="1" data-theme="b" type="radio">
+                <label for="radio1">
+                    Contra todo riezgo
+                </label>
+                <input id="radio2" name="" value="2" data-theme="b" type="radio">
+                <label for="radio2">
+                    Contra terceros
+                </label>
+            </fieldset>
+        </div>
+        <a data-role="button" data-rel="dialog" data-inline="true" data-transition="flip" data-theme="b"
+        href="#page6-2" data-icon="star" data-iconpos="right" onclick= 'validateClient()'>
+            Ok
+        </a>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function ListarCliente(){
+        var cli1name = "Juan Perez"; 
+        var cli1dni = 111111111;
+        var cli2name = "Jose Lopez"
+        var cli2dni = 222222222;
+        var cli3name = "Santiago Ligenza";
+        var cli3dni = 333333333;
+
+
+
+        document.getElementById('cli1nameLista').innerHTML = cli1name;
+        document.getElementById('cli1dniLista').innerHTML = cli1dni;
+        document.getElementById('cli2nameLista').innerHTML = cli2name;
+        document.getElementById('cli2dniLista').innerHTML = cli2dni;
+        document.getElementById('cli3nameLista').innerHTML = cli3name;
+        document.getElementById('cli3dniLista').innerHTML = cli3dni;
+
+    }
+</script>
+
+<script type="text/javascript">
+    function buscarCliente(){
+
+        var loQueBusca = document.getElementById('nameBuscado').value;
+        if (cli1name == loQueBusca || cli2name == loQueBusca || cli3name == loQueBusca || nameClient == loQueBusca){
+
+            alert("gfdshdasdas");
+        }else{
+            alert("MAAAAL");
+        }
+
+
+    }
+</script>
+
+<!-- Sreach Client -->
+<div data-role="page" id="page4">
+    <div data-theme="a" data-role="header">
+        <a id="back" data-role="button" data-transition="flip" data-theme="b"
+        href="#page1" data-icon="back" data-iconpos="left" class="ui-btn-left">
+            Atras
+        </a>
+        <h3>
+            Ventas.
+        </h3>
+    </div>
+    <div data-role="content">
+        <h4>
+            Buscar Cliente
+        </h4>
+        <div data-role="fieldcontain">
+            <input name="name" id="nameBuscado" placeholder="Nombre o Apellido" value=""
+            type="text">
+        </div>
+        <div data-role="fieldcontain">
+            <input name="idclient" id="idclient" placeholder="Numero de cliente" value=""
+            type="number">
+        </div>
+        <a data-role="button" data-inline="true" data-transition="flip" data-theme="b"
+        href="#page5" data-icon="search" data-iconpos="right">
+            Ok
+        </a> <a data-role="button" data-inline="true" data-transition="flip" data-theme="b"
+        href="#page5-2" data-icon="edit" data-iconpos="right" onclick ="ListarCliente()">
+            Listar
+        </a>
+    </div>
+</div>
+
+<!-- Pago -->
+<div data-role="page" id="page5">
+    <div data-theme="a" data-role="header">
+        <a id="back" data-role="button" data-transition="flip" data-theme="b"
+        href="#page4" data-icon="back" data-iconpos="left" class="ui-btn-left">
+            Atras
+        </a>
+        <h3>
+            Ventas.
+        </h3>
+    </div>
+    <div data-role="content">
+        <h2>NO HAY CONEXION A INTERNET.</h2><br> intentelo mas tarde.
+
+        <h4>
+            Mes:
+        </h4>
+        <h4>
+            Monto:
+        </h4>
+        <h4>
+            Vencimiento:
+        </h4>
+        <div data-role="fieldcontain">
+            <input name="pay" id="pay" placeholder="Abona" value="" type="number">
+        </div>
+        <a data-role="button" data-rel="dialog" data-inline="true" data-transition="flip" data-theme="b"
+        href="#page6" data-icon="star" data-iconpos="right">
+            Ok
+        </a>
+    </div>
+</div>
+
+
+<div data-role="page" id="page5-2">
+    <div data-theme="a" data-role="header">
+        <a id="back" data-role="button" data-transition="flip" data-theme="b"
+        href="#page4" data-icon="back" data-iconpos="left" class="ui-btn-left">
+            Atras
+        </a>
+        <h3>
+            Clientes.
+        </h3>
+    </div>
+    
+     <div data-role="content">
+        <h2>NO HAY CONEXION A INTERNET.</h2><br> intentelo mas tarde.
+        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+            <li data-role="list-divider" role="heading">
+                Lista de Clientes.  
+            </li>
+
+             
+           <!-- <li data-theme="c">
+                Nombre: <b id="cli1nameLista"></b> <br>
+                Nro de Cliente:<b id="cli1dniLista"></b><br>
+                Direccion:<b id=""> french 302</b><br>
+                Email:<b id=""> juanPerez@hotmail.com</b><br>
+                Vehiculo:<b id=""></b> Chevrolete Modelo: 2009 Valor: 128000<br>
+            </li>
+            <li data-theme="c">
+                Nombre:<b id="cli2nameLista"></b><br>
+                Nro de Cliente:<b id="cli2dniLista"></b><br>
+                Direccion:<b id=""> Av Alvear 500</b><br>
+                Email:<b id=""> Lopez@gmail.com</b><br>
+                Vehiculo:<b id=""> Ford Modelo: 2000 Valor: 78000</b><br>
+            </li>
+            <li data-theme="c">
+                Nombre:<b id="cli3nameLista"></b><br>
+                Nro de Cliente:<b id="cli3dniLista"></b><br>
+                Direccion:<b id=""> brawn 3000</b><br>
+                Email:<b id=""> Legenza@ligenza.com.ar</b><br>
+                Vehiculo:<b id=""> Peugeot 207 Modelo: 2009 Valor: 90000</b><br>
+            </li> -->
+            <li data-theme="c">
+                Nombre:<b id="qwe"></b><br>
+                Nro de Cliente:<b id="ert"></b><br>
+                Direccion:<b id="tyu"></b><br>
+                Email:<b id="uio"></b><br>
+                Vehiculo:<b id="op"></b><br>
+            </li>
+        </ul>
+    </div>
+     <a data-role="button" data-inline="true" data-transition="flip" data-theme="b"
+        href="#page2" data-icon="edit" data-iconpos="right">
+            Crear Cliente
+        </a>
+</div>
+
+<!-- Report -->
+<div data-role="page" id="page6">
+    <div data-theme="a" data-role="header">
+        <h3>
+            Reporte
+        </h3>
+    </div>
+    <div data-role="content">
+		<h5>Contratacion Seguro.</h5>
+		<p>CUIT: <b>20-22905790-2</b><br>
+		Fecha inic: <b>06/2001</b><br>
+		Nro: <b>000124</b><br>
+		Fecha: 24/06/2013</b><br>
+		</p> 
+		<p>
+		Recibimos de: <b id="nameClienteReal"> </b><br>
+		Cliente Nro:<b id="dniClienteReal"> </b><br>
+        Direccion:<b id="direccionClienteReal"> </b><br>
+        Telefono: <b id="telefonoClienteReal"> </b><br>
+        Email:<b id="emailClienteReal"> </b><br>
+        Por el vehiculo: <b id="vehiculoClienteReal"> </b><br>
+		La suma de: $<b id="SeguroxMesClienteReal"> </b><br>
+		</p>
+		<p>vigente desde: 24/06/2013, hasta: 24/07/2013.</p>
+		<p>
+		Una vez hecho efectivo el valor se aplicara al pago de las polizas arriba mencionadas</p>
+        <pre>
+
+        ___________       ______________<br>
+        Representante      Cliente</pre>
+		<a data-role="button" data-transition="flip" data-theme="b"
+        href="#page1" onclick="myFunction()"> Imprimir y volver.</a>
+    </div>
+</div>
+
+<!-- Report Presupuesto-->
+<div data-role="page" id="page6-2">
+    <div data-theme="a" data-role="header">
+        <h3>
+            Reporte
+        </h3>
+    </div>
+    <div data-role="content">
+        <h3>Presupuesto Seguro</h5>
+        <p>
+            Fecha: <b id="pfecha">24/06/2013</b><br>
+            Marcar: <b id="pmarca"></b><br>
+            Modelo: <b id="pmodelo"></b><br>
+            Precio del vehiculo: <b id="pcosto"></b><br>
+
+            Costo del seguro por Mes: <b id="pseguro"></b><br>
+        </p> 
+        <p>vigente desde: 24/06/2013, hasta: 24/07/2013.</p>
+        <p>El presupuesto tiene un periodo de duracion de 5 dias habiles</p>
+        <a data-role="button" data-transition="flip" data-theme="b"
+        href="#page1" onclick="myFunction()"> Imprimir y volver.</a>
+    </div>
+</div>
+
+<script>
+function myFunction()
+{
+alert("No hay conexion a la impresora");
+}
+</script>
+<!-- start help pages -->
+<div data-role="page" id="help">
+    <div data-theme="a" data-role="header">
+        <a id="back" data-role="button" data-transition="flip" data-theme="b"
+        href="#page1" data-icon="back" data-iconpos="left" class="ui-btn-left">
+            Atras
+        </a>
+        <h3>
+            Ayuda.
+        </h3>
+    </div>
+    
+
+    <div data-role="content">
+        <div data-theme="a" data-role="collapsible-set">
+            <div data-role="collapsible">
+                <h3 style="text-align: center;">
+                    Informacion
+                </h3>
+                    <p> Seguros es una aplicacion simple para registrar nuevos clientes en la base de datos de forma automatica con acceso a internet. En caso de no tener acceso a internet, el cliente queda registrado en el dispositivo movil y se sincronizara automaticamente con la base de datos una vez que haya una conexion disponible. Ademas se pueden realizar presupuestos automaticamente sin necesidad de disponer de Internet.</p>
+            </div>
+            <div data-role="collapsible">
+                <h3 style="text-align: center;">
+                    Como crear nuevo cliente.
+                </h3>
+                    <p>
+                        Para crear un cliente, haz touch en la seccion "Cliente" en la pantalla principal para desplegar las opciones de clientes. <br><br> Selecciona la opcione "Nuevo Cliente", Ingresar Nombre y Apellido, DNI, Direccion, Telefono, Email y fecha de nacimiento. Continuar con touch en "Datos del vehiculo" <br><br> En datos del vehiculo, deberas ingresar la Marca, el Año del modelo y el Valor en pesos. Ademas de seleccionar que tipo de Seguro se desea adquirir. Con esto se calculara el monto mensual del seguro. Touch en "Ok". <br><br> Verificar si los valores son correctos y touch en "Imprimir y volver" y volveras a la pantalla principal, Tener prendida la impresora bluetooth. en caso de un dato incorrecto puedes cerrar el reporte con la "X".
+                    </p>    
+            </div>
+            <div data-role="collapsible">
+                <h3 style="text-align: center;">
+                    Como cobrar seguro.
+                </h3>
+                    <p>
+                        Haz touch en la seccion "Cliente" en la pantalla principal para desplegar las opciones de clientes. <br><br> Selecciona la opcione "Todos los Clientes", Selecciona el cliente que se desea cobrar. o en "Cobrar seguro" en la pantalla principal para buscar un cliente determinado por Nombre o por Numero de Cliente, es necesario tener una conexion a internet en el momento de cobrar.
+                    </p>
+            </div>
+            <div data-role="collapsible">
+                <h3 style="text-align: center;">
+                    Como obtener un presupuesto.
+                </h3>
+                    
+                <p>
+                    Haz touch en "Presupuesto" en la pantalla principal, Deberas ingresar la Marca del vehiculo, el año del modelo y el valor en pesos. seleccionar el tipo de seguro que se desea adquirir. y touch en "Ok" <br><br> touch en "Imprimir y volver" y volveras a la pantalla principal, Tener prendida la impresora bluetooth. Puede cerrar el reporte con la "X".
+                </p>
+            </div>
+            <div data-role="collapsible">
+                <h3 style="text-align: center;">
+                    Informacion del desarrollo.
+                </h3>
+                    <p>
+                        Desarrollado en tecnologias Node.Js y Phonegap. para Seguros S.A. <br>
+                        Practica Profesional Supervisada.<br>
+                        Tecnicatura Superior en Programacion <br>
+                        Universidad Tecnologica Nacional - Facultad Regional Resistencia<br>
+<br>
+                        Alumno: Salas Gabriel Alejandro <br>
+                        Numero de legajo: 18381.<br>
+                        Año: 2013
+                    </P>
+            </div>
+        </div>   
+        <a data-role="button" data-transition="flip" data-theme="b" href="#page1">volver.</a> 
+    </div>
+</div>
+
+
+</body>
+</html>
